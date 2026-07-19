@@ -16,6 +16,30 @@ export type MatechButtonTypography = {
   textTransform: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
 };
 
+export type MatechTextVariant =
+  | 'h1'
+  | 'h2'
+  | 'h3'
+  | 'h4'
+  | 'h5'
+  | 'h6'
+  | 'subtitle1'
+  | 'subtitle2'
+  | 'body1'
+  | 'body2'
+  | 'caption'
+  | 'overline'
+  | 'lead';
+
+export type MatechTypographyVariantStyle = {
+  fontFamily: string;
+  fontSize: string;
+  fontWeight: number;
+  letterSpacing: string;
+  lineHeight: number;
+  textTransform: 'none' | 'uppercase' | 'lowercase' | 'capitalize';
+};
+
 export type MatechGlobalPalette = {
   brand: string;
   brandStrong: string;
@@ -55,11 +79,15 @@ export type MatechPaletteOptions = {
 export type MatechTypography = {
   fontFamily: string;
   button: MatechButtonTypography;
+  variants: Record<MatechTextVariant, MatechTypographyVariantStyle>;
 };
 
 export type MatechTypographyOptions = {
   button?: Partial<MatechButtonTypography>;
   fontFamily?: string;
+  variants?: {
+    [K in MatechTextVariant]?: Partial<MatechTypographyVariantStyle>;
+  };
 };
 
 export type MatechThemeOptions = MatechPaletteOptions & {

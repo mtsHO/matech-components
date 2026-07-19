@@ -1,0 +1,102 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+import * as TypographyStories from './stories/Typography.stories';
+
+<Meta of={TypographyStories} />
+
+# Typography
+
+O `Typography` centraliza a exibicao de titulos, subtitulos e paragrafos da `@matech/components`.
+
+Ele foi pensado para dar consistencia sem depender de uma biblioteca de UI externa.
+
+## Importacao
+
+```tsx
+import { Typography } from '@matech/components';
+```
+
+## Uso rapido
+
+```tsx
+<Typography variant="h3">Feed da comunidade</Typography>
+<Typography color="muted" variant="body1">
+  Veja o que esta acontecendo na comunidade.
+</Typography>
+```
+
+<Canvas of={TypographyStories.Playground} sourceState="shown" />
+
+## Variantes
+
+As variantes seguem uma linha familiar ao MUI:
+
+- `h1` a `h6`
+- `subtitle1`
+- `subtitle2`
+- `body1`
+- `body2`
+- `caption`
+- `overline`
+
+Sugestao extra da lib:
+
+- `lead`: texto de introducao com mais destaque
+
+### Todas as variantes
+
+<Canvas of={TypographyStories.AllVariants} />
+
+## Props principais
+
+O componente suporta:
+
+- `variant`
+- `as`
+- `color`
+- `align`
+- `gutterBottom`
+- `noWrap`
+
+<Controls of={TypographyStories.Playground} />
+
+## Personalizacao por tema
+
+O `Typography` usa os tokens de `global palette` para cores e os tokens de `typography.variants` para tamanho, peso e espacamento.
+
+### Exemplo com `createMatechTheme`
+
+```tsx
+import {
+  MatechThemeProvider,
+  Typography,
+  createMatechTheme,
+} from '@matech/components';
+
+const theme = createMatechTheme({
+  global: {
+    brand: '#31408B',
+    brandStrong: '#283471',
+    brandForeground: '#FFFFFF',
+    surface: '#FFFFFF',
+    surfaceMuted: '#F7F9FF',
+    border: '#DEE4F5',
+    borderStrong: '#C7D1EC',
+    text: '#2A356E',
+    textMuted: '#66719A',
+  },
+  typography: {
+    variants: {
+      h3: {
+        fontSize: '1.75rem',
+        fontWeight: 800,
+        letterSpacing: '-0.02em',
+      },
+      body1: {
+        lineHeight: 1.7,
+      },
+    },
+  },
+});
+```
+
+<Canvas of={TypographyStories.CustomTypography} />

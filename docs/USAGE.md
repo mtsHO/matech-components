@@ -63,6 +63,34 @@ Quando usar cada variante:
 - `secondary`: acao secundaria com contorno
 - `tertiary`: acao leve, contextual, com fundo transparente
 
+## Typography
+
+O `Typography` centraliza titulos, subtitulos e paragrafos.
+
+Variantes disponiveis:
+
+- `h1` a `h6`
+- `subtitle1`
+- `subtitle2`
+- `body1`
+- `body2`
+- `caption`
+- `overline`
+- `lead`
+
+Exemplos:
+
+```tsx
+<Typography variant="h3">Feed da comunidade</Typography>
+<Typography variant="subtitle1">Leia o feed, comente ou publique algo.</Typography>
+<Typography color="muted" variant="body1">
+  Veja o que esta acontecendo na comunidade e participe das conversas.
+</Typography>
+<Typography color="muted" variant="caption">
+  Exibindo 1 de 1 publicacoes.
+</Typography>
+```
+
 ## Personalizacao por tema
 
 A lib possui uma palette default interna. O projeto consumidor pode sobrescrever apenas o que precisar usando o `MatechThemeProvider`.
@@ -126,6 +154,16 @@ const theme = createMatechTheme({
       fontWeight: 900,
       letterSpacing: '0.04em',
       textTransform: 'uppercase',
+    },
+    variants: {
+      h3: {
+        fontSize: '1.75rem',
+        fontWeight: 800,
+        letterSpacing: '-0.02em',
+      },
+      body1: {
+        lineHeight: 1.7,
+      },
     },
   },
 });
@@ -237,6 +275,12 @@ Endereco local:
 
 - `http://localhost:6006`
 
+Se a porta `6006` estiver ocupada:
+
+```bash
+npm run storybook -- -p 6007
+```
+
 ## Fluxo recomendado no projeto consumidor
 
 1. Instale a lib.
@@ -248,3 +292,4 @@ Endereco local:
 
 - Guia de manutencao: [`./MAINTAINING.md`](./MAINTAINING.md)
 - Docs do `Button` no Storybook: `src/Button/Button.docs.mdx`
+- Docs do `Typography` no Storybook: `src/Typography/Typography.docs.mdx`

@@ -16,9 +16,11 @@ export type {
   MatechGlobalPalette,
   MatechPalette,
   MatechPaletteOptions,
+  MatechTextVariant,
   MatechTheme,
   MatechThemeOptions,
   MatechTypography,
+  MatechTypographyVariantStyle,
   MatechTypographyOptions,
 } from './theme.types';
 export type { MatechThemeProviderProps } from './ThemeProvider';

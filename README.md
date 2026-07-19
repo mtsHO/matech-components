@@ -28,6 +28,7 @@ export function Example() {
 Componentes:
 
 - `Button`
+- `Typography`
 
 Helpers de tema:
 
@@ -48,15 +49,19 @@ Tipos:
 
 - `ButtonProps`
 - `ButtonVariant`
+- `TypographyProps`
+- `TypographyVariant`
 - `MatechButtonPalette`
 - `MatechButtonPaletteVariant`
 - `MatechButtonTypography`
 - `MatechGlobalPalette`
 - `MatechPalette`
 - `MatechPaletteOptions`
+- `MatechTextVariant`
 - `MatechTheme`
 - `MatechThemeOptions`
 - `MatechTypography`
+- `MatechTypographyVariantStyle`
 - `MatechTypographyOptions`
 
 ## Desenvolvimento local
@@ -65,6 +70,12 @@ Storybook:
 
 ```bash
 npm run storybook
+```
+
+Se a porta `6006` ja estiver em uso:
+
+```bash
+npm run storybook -- -p 6007
 ```
 
 Build:
