@@ -1,7 +1,7 @@
 import { act, renderHook } from '@testing-library/react';
 import { createElement, type ReactNode } from 'react';
 import { describe, expect, it, vi } from 'vitest';
-import { createMatechTheme, MatechThemeProvider } from '../../theme';
+import { createMatechTheme, MatechThemeProvider } from '../../../theme';
 import { useButtonViewModel } from './useButtonViewModel';
 
 function createWrapper(theme = createMatechTheme()) {

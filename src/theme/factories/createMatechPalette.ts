@@ -1,5 +1,5 @@
-import { createMatechDefaultButtonPalette } from '../palette/components/button.palette';
-import { matechDefaultGlobalPalette } from '../palette/global.palette';
+import { createMatechDefaultButtonPalette } from '../palette/components';
+import { matechDefaultGlobalPalette } from '../palette';
 import type {
   MatechButtonPaletteVariant,
   MatechPalette,

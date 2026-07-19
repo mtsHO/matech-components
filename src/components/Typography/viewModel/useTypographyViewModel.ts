@@ -1,5 +1,5 @@
 import { useMemo } from 'react';
-import { useMatechTheme } from '../../theme';
+import { useMatechTheme } from '../../../theme';
 import { matechTypographyStyles } from '../Typography.styles';
 import type {
   TypographyElement,
@@ -27,7 +27,7 @@ const defaultElementByVariant: Record<
   lead: 'p',
 };
 
-export function useTypographyViewModel({
+export function useTypographyViewModel<T extends TypographyElement>({
   align,
   as,
   color,
@@ -35,7 +35,7 @@ export function useTypographyViewModel({
   nativeTypographyProps,
   noWrap,
   variant = 'body1',
-}: UseTypographyViewModelParams): UseTypographyViewModelResult {
+}: UseTypographyViewModelParams<T>): UseTypographyViewModelResult<T> {
   const { palette, typography } = useMatechTheme();
 
   const Component: TypographyElement = as ?? defaultElementByVariant[variant];

@@ -1,14 +1,17 @@
 export {
   createMatechPalette,
-} from './helpers/createMatechPalette';
-export { createMatechTheme } from './helpers/createMatechTheme';
-export { createMatechThemeOptions } from './helpers/createMatechThemeOptions';
-export { getMatechPalette } from './helpers/getMatechPalette';
+  createMatechTheme,
+  createMatechThemeOptions,
+  getMatechPalette,
+} from './factories';
 export { MatechThemeProvider, useMatechTheme } from './ThemeProvider';
-export { matechDefaultPalette } from './palette/default.palette';
-export { matechDefaultButtonPalette } from './palette/components/button.palette';
-export { matechDefaultGlobalPalette } from './palette/global.palette';
-export { matechDefaultTypography } from './typography/default.typography';
+export {
+  createMatechDefaultButtonPalette,
+  matechDefaultButtonPalette,
+  matechDefaultGlobalPalette,
+  matechDefaultPalette,
+} from './palette';
+export { matechDefaultTypography } from './typography';
 export type {
   MatechButtonPalette,
   MatechButtonPaletteVariant,
@@ -23,4 +26,4 @@ export type {
   MatechTypographyVariantStyle,
   MatechTypographyOptions,
 } from './theme.types';
-export type { MatechThemeProviderProps } from './ThemeProvider';
+export type { MatechThemeProviderProps } from './ThemeProvider.types';

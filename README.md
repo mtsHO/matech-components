@@ -23,6 +23,7 @@ export function Example() {
 - Uso da lib: [`docs/USAGE.md`](./docs/USAGE.md)
 - Manutencao e boas praticas: [`docs/MAINTAINING.md`](./docs/MAINTAINING.md)
 - Publicacao da lib: [`docs/PUBLISHING.md`](./docs/PUBLISHING.md)
+- Changelog e release notes: [`CHANGELOG.md`](./CHANGELOG.md)
 
 ## GitHub
 
@@ -52,16 +53,21 @@ Helpers de tema:
 - `MatechThemeProvider`
 - `useMatechTheme`
 
-Paletas default:
+Defaults e factories de tema:
 
+- `createMatechDefaultButtonPalette`
 - `matechDefaultPalette`
 - `matechDefaultButtonPalette`
 - `matechDefaultGlobalPalette`
+- `matechDefaultTypography`
 
 Tipos:
 
+- `ButtonSize`
 - `ButtonProps`
 - `ButtonVariant`
+- `TypographyAlign`
+- `TypographyColor`
 - `TypographyProps`
 - `TypographyVariant`
 - `MatechButtonPalette`
@@ -73,9 +79,10 @@ Tipos:
 - `MatechTextVariant`
 - `MatechTheme`
 - `MatechThemeOptions`
+- `MatechThemeProviderProps`
 - `MatechTypography`
-- `MatechTypographyVariantStyle`
 - `MatechTypographyOptions`
+- `MatechTypographyVariantStyle`
 
 ## Desenvolvimento local
 
@@ -103,6 +110,12 @@ Testes:
 npm test
 ```
 
+Coverage:
+
+```bash
+npm run test:coverage
+```
+
 Validacao antes de publicar:
 
 ```bash
@@ -115,6 +128,10 @@ Validacao completa de release:
 npm run release:check
 ```
 
+Hook local:
+
+- o `pre-commit` roda `npm run test:coverage`
+
 ## Publicacao
 
 Fluxo sugerido:
@@ -122,7 +139,8 @@ Fluxo sugerido:
 ```bash
 npm version patch
 npm run release:check
-npm publish
+git push origin main
+git push origin --tags
 ```
 
 Observacoes:
@@ -131,3 +149,4 @@ Observacoes:
 - A lib depende apenas de `react` e `react-dom` como `peerDependencies`.
 - Como o pacote usa `publishConfig.access = "public"`, a publicacao sai publica por padrao.
 - Para publicar como `@mateusho/matech-components`, a conta no npm precisa ter acesso ao escopo `@mateusho`.
+- o workflow `.github/workflows/publish.yml` publica no npm quando a tag `vX.Y.Z` chega no GitHub.

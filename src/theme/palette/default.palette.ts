@@ -1,5 +1,5 @@
 import { matechDefaultGlobalPalette } from './global.palette';
-import { createMatechDefaultButtonPalette } from './components/button.palette';
+import { createMatechDefaultButtonPalette } from './components';
 import type { MatechPalette } from '../theme.types';
 
 export const matechDefaultPalette: MatechPalette = {

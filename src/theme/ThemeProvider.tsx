@@ -2,19 +2,14 @@ import {
   createContext,
   useContext,
   useMemo,
-  type ReactNode,
 } from 'react';
-import { createMatechTheme } from './helpers/createMatechTheme';
+import { createMatechTheme } from './factories';
 import type { MatechTheme, MatechThemeOptions } from './theme.types';
+import type { MatechThemeProviderProps } from './ThemeProvider.types';
 
 const defaultTheme = createMatechTheme();
 
 const MatechThemeContext = createContext<MatechTheme>(defaultTheme);
-
-export type MatechThemeProviderProps = {
-  children: ReactNode;
-  theme?: MatechTheme | MatechThemeOptions;
-};
 
 function isMatechTheme(value?: MatechTheme | MatechThemeOptions): value is MatechTheme {
   return Boolean(value && 'palette' in value);

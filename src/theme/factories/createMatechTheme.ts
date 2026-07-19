@@ -1,5 +1,5 @@
 import { createMatechPalette } from './createMatechPalette';
-import { matechDefaultTypography } from '../typography/default.typography';
+import { matechDefaultTypography } from '../typography';
 import type {
   MatechTextVariant,
   MatechTheme,

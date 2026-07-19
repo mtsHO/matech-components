@@ -1,4 +1,4 @@
-import { createMatechTheme } from '../../theme';
+import { createMatechTheme } from '../../../theme';
 
 export function createButtonStoryTheme() {
   return createMatechTheme({

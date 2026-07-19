@@ -7,7 +7,7 @@ import type {
 import type {
   MatechButtonPaletteVariant,
   MatechButtonTypography,
-} from '../theme';
+} from '../../theme';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'tertiary';
 export type ButtonSize = 'small' | 'medium' | 'large';

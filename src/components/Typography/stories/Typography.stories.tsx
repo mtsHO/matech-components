@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MatechThemeProvider } from '../../theme';
+import type { Meta } from '@storybook/react-vite';
+import { MatechThemeProvider } from '../../../theme';
 import { Typography } from '../Typography';
+import type { TypographyStory } from './Typography.stories.types';
 import { StoryStack } from './story-layout';
 import { createTypographyStoryTheme } from './story-theme';
 
@@ -42,60 +43,58 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+export const Playground: TypographyStory = {};
 
-export const Playground: Story = {};
-
-export const H1: Story = {
+export const H1: TypographyStory = {
   args: {
     children: 'Heading h1',
     variant: 'h1',
   },
 };
 
-export const H2: Story = {
+export const H2: TypographyStory = {
   args: {
     children: 'Heading h2',
     variant: 'h2',
   },
 };
 
-export const H3: Story = {
+export const H3: TypographyStory = {
   args: {
     children: 'Heading h3',
     variant: 'h3',
   },
 };
 
-export const H4: Story = {
+export const H4: TypographyStory = {
   args: {
     children: 'Heading h4',
     variant: 'h4',
   },
 };
 
-export const H5: Story = {
+export const H5: TypographyStory = {
   args: {
     children: 'Heading h5',
     variant: 'h5',
   },
 };
 
-export const H6: Story = {
+export const H6: TypographyStory = {
   args: {
     children: 'Heading h6',
     variant: 'h6',
   },
 };
 
-export const Subtitle1: Story = {
+export const Subtitle1: TypographyStory = {
   args: {
     children: 'Subtitle 1',
     variant: 'subtitle1',
   },
 };
 
-export const Subtitle2: Story = {
+export const Subtitle2: TypographyStory = {
   args: {
     children: 'Subtitle 2',
     color: 'muted',
@@ -103,14 +102,14 @@ export const Subtitle2: Story = {
   },
 };
 
-export const Lead: Story = {
+export const Lead: TypographyStory = {
   args: {
     children: 'Lead e uma sugestao extra para introducoes e blocos de destaque.',
     variant: 'lead',
   },
 };
 
-export const Body1: Story = {
+export const Body1: TypographyStory = {
   args: {
     children:
       'Body 1 para paragrafos principais com melhor legibilidade em blocos maiores.',
@@ -118,7 +117,7 @@ export const Body1: Story = {
   },
 };
 
-export const Body2: Story = {
+export const Body2: TypographyStory = {
   args: {
     children: 'Body 2 para textos secundarios, metadata e apoio visual.',
     color: 'muted',
@@ -126,7 +125,7 @@ export const Body2: Story = {
   },
 };
 
-export const Caption: Story = {
+export const Caption: TypographyStory = {
   args: {
     children: 'Caption para detalhes pequenos e textos auxiliares.',
     color: 'muted',
@@ -134,7 +133,7 @@ export const Caption: Story = {
   },
 };
 
-export const Overline: Story = {
+export const Overline: TypographyStory = {
   args: {
     children: 'Overline',
     color: 'brand',
@@ -142,7 +141,7 @@ export const Overline: Story = {
   },
 };
 
-export const AllVariants: Story = {
+export const AllVariants: TypographyStory = {
   render: () => (
     <StoryStack>
       <Typography variant="h1">Heading h1</Typography>
@@ -174,7 +173,7 @@ export const AllVariants: Story = {
   ),
 };
 
-export const CustomTypography: Story = {
+export const CustomTypography: TypographyStory = {
   render: () => {
     const theme = createTypographyStoryTheme();
 

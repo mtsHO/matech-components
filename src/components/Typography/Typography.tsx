@@ -2,10 +2,15 @@ import {
   forwardRef,
   type ForwardedRef,
 } from 'react';
-import type { TypographyProps } from './Typography.types';
+import type {
+  TypographyComponentType,
+  TypographyDefaultElement,
+  TypographyElement,
+  TypographyProps,
+} from './Typography.types';
 import { useTypographyViewModel } from './viewModel/useTypographyViewModel';
 
-function TypographyComponent(
+function TypographyComponent<T extends TypographyElement = TypographyDefaultElement>(
   {
     align,
     as,
@@ -16,7 +21,7 @@ function TypographyComponent(
     style,
     variant,
     ...nativeTypographyProps
-  }: TypographyProps,
+  }: TypographyProps<T>,
   ref: ForwardedRef<HTMLElement>,
 ) {
   const {
@@ -46,8 +51,6 @@ function TypographyComponent(
   );
 }
 
-export const Typography = forwardRef<HTMLElement, TypographyProps>(
-  TypographyComponent,
-);
+export const Typography = forwardRef(TypographyComponent) as TypographyComponentType;
 
-Typography.displayName = 'Typography';
+(Typography as { displayName?: string }).displayName = 'Typography';

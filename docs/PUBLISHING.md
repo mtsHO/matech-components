@@ -77,6 +77,7 @@ A lib possui estes scripts para publicacao:
 
 ```bash
 npm run validate
+npm run test:coverage
 npm run release:check
 npm run pack:check
 ```
@@ -84,6 +85,7 @@ npm run pack:check
 O que cada um faz:
 
 - `npm run validate`: checa tipos dos testes, roda testes e gera o build da lib
+- `npm run test:coverage`: valida a cobertura util cobrada pela lib e e o comando usado no `pre-commit`
 - `npm run release:check`: roda toda a validacao de release, incluindo Storybook e empacotamento
 - `npm run pack:check`: mostra o que vai entrar no pacote publicado
 
@@ -95,7 +97,9 @@ Confirme que:
 
 - os componentes novos estao exportados em `src/index.ts`
 - docs e stories estao atualizadas
+- o `CHANGELOG.md` foi atualizado quando a release trouxer mudancas relevantes
 - testes estao passando
+- `npm run test:coverage` passa localmente
 
 ### 2. Atualize a versao
 
@@ -216,6 +220,7 @@ Exemplos para esta lib:
 
 - publique sempre a partir de uma branch limpa
 - rode `npm run release:check` antes de toda release
+- confirme que o `pre-commit` nao esta falhando por coverage antes de versionar
 - nao publique sem revisar a versao no `package.json`
 - documente novos componentes antes da release
 - prefira releases pequenas e frequentes

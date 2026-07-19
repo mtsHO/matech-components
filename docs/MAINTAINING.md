@@ -12,29 +12,61 @@ Este guia define como evoluir a `@mateusho/matech-components` com consistencia, 
 
 ## Estrutura atual
 
+Estrutura base da lib hoje.
+Os exemplos abaixo mostram a organizacao oficial e nao necessariamente listam todo arquivo auxiliar ou todo teste existente.
+
 ```text
 src/
-  Button/
-    Button.docs.mdx
-    Button.styles.ts
-    Button.test.tsx
-    Button.tsx
-    Button.types.ts
+  components/
+    Button/
+      Button.docs.mdx
+      Button.styles.ts
+      Button.test.tsx
+      Button.tsx
+      Button.types.ts
+      index.ts
+      stories/
+        Button.stories.tsx
+        story-icons.tsx
+        story-layout.tsx
+        story-theme.ts
+      viewModel/
+        useButtonViewModel.ts
+    Typography/
+      Typography.docs.mdx
+      Typography.styles.ts
+      Typography.test.tsx
+      Typography.tsx
+      Typography.types.ts
+      index.ts
+      stories/
+        Typography.stories.tsx
+        story-layout.tsx
+        story-theme.ts
+      viewModel/
+        useTypographyViewModel.ts
     index.ts
-    stories/
-      Button.stories.tsx
-      story-icons.tsx
-      story-layout.tsx
-      story-theme.ts
-    viewModel/
-      useButtonViewModel.ts
   theme/
     typography/
-    helpers/
+      default.typography.ts
+      index.ts
+    factories/
+      createMatechPalette.ts
+      createMatechTheme.ts
+      createMatechThemeOptions.ts
+      getMatechPalette.ts
+      index.ts
     palette/
+      components/
+        button.palette.ts
+        index.ts
+      default.palette.ts
+      global.palette.ts
+      index.ts
     ThemeProvider.tsx
     index.ts
     theme.types.ts
+    ThemeProvider.types.ts
   index.ts
 ```
 
@@ -61,23 +93,24 @@ Quando um novo componente for criado, ele deve seguir a mesma linha de organizac
 
 ## Como organizar um novo componente
 
-Cada novo componente deve ter sua propria pasta em `src`.
+Cada novo componente deve ter sua propria pasta em `src/components`.
 
 Estrutura recomendada:
 
 ```text
 src/
-  ComponentName/
-    ComponentName.docs.mdx
-    ComponentName.styles.ts
-    ComponentName.test.tsx
-    ComponentName.tsx
-    ComponentName.types.ts
-    index.ts
-    stories/
-      ComponentName.stories.tsx
-    viewModel/
-      useComponentNameViewModel.ts
+  components/
+    ComponentName/
+      ComponentName.docs.mdx
+      ComponentName.styles.ts
+      ComponentName.test.tsx
+      ComponentName.tsx
+      ComponentName.types.ts
+      index.ts
+      stories/
+        ComponentName.stories.tsx
+      viewModel/
+        useComponentNameViewModel.ts
 ```
 
 Arquivos opcionais:
@@ -108,20 +141,21 @@ Hoje o `Button` esta organizado assim:
 
 ```text
 src/
-  Button/
-    Button.docs.mdx
-    Button.styles.ts
-    Button.test.tsx
-    Button.tsx
-    Button.types.ts
-    index.ts
-    stories/
-      Button.stories.tsx
-      story-icons.tsx
-      story-layout.tsx
-      story-theme.ts
-    viewModel/
-      useButtonViewModel.ts
+  components/
+    Button/
+      Button.docs.mdx
+      Button.styles.ts
+      Button.test.tsx
+      Button.tsx
+      Button.types.ts
+      index.ts
+      stories/
+        Button.stories.tsx
+        story-icons.tsx
+        story-layout.tsx
+        story-theme.ts
+      viewModel/
+        useButtonViewModel.ts
 ```
 
 Leitura da arquitetura:
@@ -140,7 +174,7 @@ Esse deve ser o modelo base para os proximos componentes.
 
 Use dois niveis de exportacao:
 
-- `src/ComponentName/index.ts`: organiza a pasta do componente
+- `src/components/ComponentName/index.ts`: organiza a pasta do componente
 - `src/index.ts`: controla a API publica da lib
 
 Isso ajuda a:
@@ -153,14 +187,14 @@ Isso ajuda a:
 
 Checklist:
 
-1. Criar a pasta do componente em `src/`.
+1. Criar a pasta do componente em `src/components/`.
 2. Criar `ComponentName.tsx`, `ComponentName.styles.ts`, `ComponentName.types.ts` e `index.ts`.
 3. Decidir se o componente precisa de `viewModel/`.
 4. Criar `stories/ComponentName.stories.tsx`.
 5. Separar helpers de story quando o arquivo principal comecar a ficar poluido.
 6. Criar `ComponentName.docs.mdx` explicando uso e customizacao.
 7. Criar `ComponentName.test.tsx` com comportamento essencial.
-8. Exportar em `src/ComponentName/index.ts`.
+8. Exportar em `src/components/ComponentName/index.ts`.
 9. Exportar em `src/index.ts`.
 10. Se o componente tiver tokens visuais proprios, adicionar palette default em `src/theme/palette/components/`.
 11. Atualizar `src/theme/theme.types.ts` para permitir override tipado.
@@ -191,6 +225,15 @@ Hoje a lib usa:
 
 - `global`: tokens gerais
 - `components.button`: tokens do `Button`
+
+Convencao de pastas no tema:
+
+- `theme/factories/`: criacao e resolucao do tema final
+- `theme/palette/`: tokens de cor e defaults visuais
+- `theme/palette/components/`: tokens especificos por componente
+- `theme/typography/`: tokens tipograficos da lib
+- `theme/theme.types.ts`: contratos tipados do tema
+- `theme/ThemeProvider.types.ts`: tipos locais do provider
 
 Ao criar um novo componente com tokens proprios:
 
@@ -241,6 +284,9 @@ Priorize testes para:
 - respeito a overrides de tema
 - contrato publico do componente, nao detalhes cosmeticos internos
 
+Arquivos `*.styles.ts` normalmente nao precisam de teste direto.
+O ideal e validar o comportamento publico do componente e a composicao do tema.
+
 Evite testes muito acoplados a detalhes internos de implementacao.
 
 ## Fluxo recomendado para evoluir a lib
@@ -273,6 +319,12 @@ Testes:
 npm test
 ```
 
+Coverage:
+
+```bash
+npm run test:coverage
+```
+
 Empacotamento de validacao:
 
 ```bash
@@ -296,12 +348,17 @@ Fluxo oficial de release:
 ```bash
 npm version patch
 npm run release:check
-npm publish
+git push origin main
+git push origin --tags
 ```
 
 Guia detalhado:
 
 - `docs/PUBLISHING.md`
+
+Qualidade local:
+
+- o `pre-commit` roda `npm run test:coverage`
 
 ## O que evitar
 

@@ -291,5 +291,5 @@ npm run storybook -- -p 6007
 ## Referencias
 
 - Guia de manutencao: [`./MAINTAINING.md`](./MAINTAINING.md)
-- Docs do `Button` no Storybook: `src/Button/Button.docs.mdx`
-- Docs do `Typography` no Storybook: `src/Typography/Typography.docs.mdx`
+- Docs do `Button` no Storybook: `src/components/Button/Button.docs.mdx`
+- Docs do `Typography` no Storybook: `src/components/Typography/Typography.docs.mdx`

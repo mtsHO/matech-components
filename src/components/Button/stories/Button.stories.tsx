@@ -1,6 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { MatechThemeProvider } from '../../theme';
+import type { Meta } from '@storybook/react-vite';
+import { MatechThemeProvider } from '../../../theme';
 import { Button } from '../Button';
+import type { ButtonStory } from './Button.stories.types';
 import { StoryStack } from './story-layout';
 import {
   HeartIcon,
@@ -36,32 +37,30 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+export const Primary: ButtonStory = {};
 
-export const Primary: Story = {};
-
-export const Secondary: Story = {
+export const Secondary: ButtonStory = {
   args: {
     children: 'Retomar curso',
     variant: 'secondary',
   },
 };
 
-export const Tertiary: Story = {
+export const Tertiary: ButtonStory = {
   args: {
     children: 'Responder',
     variant: 'tertiary',
   },
 };
 
-export const PrimaryWithIcon: Story = {
+export const PrimaryWithIcon: ButtonStory = {
   args: {
     children: 'Novo evento',
     icon: <PlusIcon />,
   },
 };
 
-export const SecondaryWithIcon: Story = {
+export const SecondaryWithIcon: ButtonStory = {
   args: {
     children: 'Retomar curso',
     icon: <PlayIcon />,
@@ -69,7 +68,7 @@ export const SecondaryWithIcon: Story = {
   },
 };
 
-export const TertiaryWithIcon: Story = {
+export const TertiaryWithIcon: ButtonStory = {
   args: {
     children: 'Curtir',
     icon: <HeartIcon />,
@@ -77,7 +76,7 @@ export const TertiaryWithIcon: Story = {
   },
 };
 
-export const Showcase: Story = {
+export const Showcase: ButtonStory = {
   render: () => (
     <StoryStack alignItems="flex-start">
       <Button icon={<PlusIcon />}>Novo evento</Button>
@@ -104,7 +103,7 @@ export const Showcase: Story = {
   ),
 };
 
-export const CustomPalette: Story = {
+export const CustomPalette: ButtonStory = {
   render: () => {
     const theme = createButtonStoryTheme();
 

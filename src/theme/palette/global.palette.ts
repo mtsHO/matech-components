@@ -11,4 +11,3 @@ export const matechDefaultGlobalPalette: MatechGlobalPalette = {
   text: '#4538A6',
   textMuted: '#A0A7C2',
 };
-

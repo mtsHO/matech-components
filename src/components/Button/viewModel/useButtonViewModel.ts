@@ -3,7 +3,7 @@ import {
   useState,
   type MouseEvent,
 } from 'react';
-import { useMatechTheme } from '../../theme';
+import { useMatechTheme } from '../../../theme';
 import { matechButtonStyles } from '../Button.styles';
 import type {
   UseButtonViewModelParams,

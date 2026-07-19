@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom/vitest';
 import { render, screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { createMatechTheme, MatechThemeProvider } from '../theme';
+import { createMatechTheme, MatechThemeProvider } from '../../theme';
 import { Typography } from './Typography';
 
 describe('Typography', () => {
@@ -25,6 +25,26 @@ describe('Typography', () => {
 
     expect(element.tagName).toBe('SPAN');
     expect(element).toHaveAttribute('data-variant', 'h4');
+  });
+
+  it('accepts native props from the chosen element with as', () => {
+    render(
+      <>
+        <Typography as="a" href="/cursos">
+          Ver cursos
+        </Typography>
+        <Typography as="label" htmlFor="email">
+          E-mail
+        </Typography>
+        <input id="email" />
+      </>,
+    );
+
+    expect(screen.getByRole('link', { name: 'Ver cursos' })).toHaveAttribute(
+      'href',
+      '/cursos',
+    );
+    expect(screen.getByText('E-mail')).toHaveAttribute('for', 'email');
   });
 
   it('uses palette colors from the theme', () => {
