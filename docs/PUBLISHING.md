@@ -1,6 +1,6 @@
 # Publicacao da Lib
 
-Este guia define um fluxo simples e facil de manter para publicar a `@matech/components`.
+Este guia define um fluxo simples e facil de manter para publicar a `@mateusho/matech-components`.
 
 ## Objetivo
 
@@ -15,9 +15,9 @@ Ter um processo previsivel para:
 
 Antes da primeira publicacao, confirme:
 
-- a conta do npm tem permissao no escopo `@matech`
+- a conta do npm tem permissao no escopo `@mateusho`
 - voce esta autenticado no npm
-- o nome do pacote `@matech/components` esta correto
+- o nome do pacote `@mateusho/matech-components` esta correto
 - o repositorio esta no GitHub
 
 Comandos uteis:
@@ -64,7 +64,7 @@ Crie o secret:
 
 - `NPM_TOKEN`
 
-Esse token deve vir do npm com permissao para publicar o pacote `@matech/components`.
+Esse token deve vir do npm com permissao para publicar o pacote `@mateusho/matech-components`.
 
 ### 3. Confirmar o comportamento dos workflows
 
@@ -179,13 +179,13 @@ Quando a tag `vX.Y.Z` chegar no GitHub, o workflow `publish.yml` publica a versa
 Depois de publicar, confirme:
 
 ```bash
-npm view @matech/components version
+npm view @mateusho/matech-components version
 ```
 
 Se quiser validar consumo real:
 
 ```bash
-npm install @matech/components@<versao>
+npm install @mateusho/matech-components@<versao>
 ```
 
 ## Fluxo enxuto para o dia a dia
@@ -240,7 +240,7 @@ Quando um novo componente entrar na lib:
 Se o `npm publish` falhar com permissao:
 
 - confirme a conta logada com `npm whoami`
-- confirme acesso ao escopo `@matech`
+- confirme acesso ao escopo `@mateusho`
 
 ### Storybook nao sobe localmente
 

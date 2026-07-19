@@ -1,11 +1,11 @@
 # Uso da Lib
 
-Este guia mostra como consumir a `@matech/components` em um projeto React, sem depender de MUI ou outra biblioteca de UI.
+Este guia mostra como consumir a `@mateusho/matech-components` em um projeto React, sem depender de MUI ou outra biblioteca de UI.
 
 ## Instalacao
 
 ```bash
-npm install @matech/components
+npm install @mateusho/matech-components
 ```
 
 Peer dependencies esperadas no projeto consumidor:
@@ -16,13 +16,13 @@ Peer dependencies esperadas no projeto consumidor:
 ## Importacao
 
 ```tsx
-import { Button } from '@matech/components';
+import { Button } from '@mateusho/matech-components';
 ```
 
 ## Primeiro uso
 
 ```tsx
-import { Button } from '@matech/components';
+import { Button } from '@mateusho/matech-components';
 
 export function Example() {
   return <Button>Novo curso</Button>;
@@ -134,7 +134,7 @@ import {
   Button,
   createMatechTheme,
   MatechThemeProvider,
-} from '@matech/components';
+} from '@mateusho/matech-components';
 
 const theme = createMatechTheme({
   global: {
@@ -187,7 +187,7 @@ import {
   createMatechTheme,
   createMatechThemeOptions,
   MatechThemeProvider,
-} from '@matech/components';
+} from '@mateusho/matech-components';
 
 const themeOptions = createMatechThemeOptions({
   components: {
@@ -213,7 +213,7 @@ import {
   Button,
   createMatechTheme,
   MatechThemeProvider,
-} from '@matech/components';
+} from '@mateusho/matech-components';
 
 const theme = createMatechTheme({
   typography: {
@@ -233,7 +233,7 @@ const theme = createMatechTheme({
 Se o projeto precisar ler a configuracao final da lib ja com defaults + overrides aplicados:
 
 ```tsx
-import { getMatechPalette } from '@matech/components';
+import { getMatechPalette } from '@mateusho/matech-components';
 
 const palette = getMatechPalette(theme);
 ```

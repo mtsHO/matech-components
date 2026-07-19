@@ -1,17 +1,17 @@
-# @matech/components
+# @mateusho/matech-components
 
 Biblioteca de componentes compartilhados da Matech.
 
 ## Instalacao
 
 ```bash
-npm install @matech/components
+npm install @mateusho/matech-components
 ```
 
 ## Uso rapido
 
 ```tsx
-import { Button } from '@matech/components';
+import { Button } from '@mateusho/matech-components';
 
 export function Example() {
   return <Button>Novo curso</Button>;
@@ -130,4 +130,4 @@ Observacoes:
 - O pacote publica apenas `dist`.
 - A lib depende apenas de `react` e `react-dom` como `peerDependencies`.
 - Como o pacote usa `publishConfig.access = "public"`, a publicacao sai publica por padrao.
-- Para publicar como `@matech/components`, a conta ou organizacao no npm precisa ter acesso ao escopo `@matech`.
+- Para publicar como `@mateusho/matech-components`, a conta no npm precisa ter acesso ao escopo `@mateusho`.

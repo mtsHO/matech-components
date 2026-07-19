@@ -1,6 +1,6 @@
 # Manutencao da Lib
 
-Este guia define como evoluir a `@matech/components` com consistencia, previsibilidade e facilidade de manutencao.
+Este guia define como evoluir a `@mateusho/matech-components` com consistencia, previsibilidade e facilidade de manutencao.
 
 ## Principios
 
@@ -55,7 +55,7 @@ O ponto mais importante agora nao e mudar a arquitetura de novo, e sim repetir e
 
 ## Componente padrao da lib
 
-O `Button` deve ser tratado como o componente de referencia da arquitetura da `@matech/components`.
+O `Button` deve ser tratado como o componente de referencia da arquitetura da `@mateusho/matech-components`.
 
 Quando um novo componente for criado, ele deve seguir a mesma linha de organizacao do `Button`, ajustando apenas o que realmente fizer sentido para o contexto.
 
