@@ -1,4 +1,9 @@
 node_modules
 dist
 storybook-static
-
+*.log
+*.tgz
+.env
+.env.*
+.npmrc
+.DS_Store
