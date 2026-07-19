@@ -291,6 +291,18 @@ Antes de publicar, verifique:
 - nome das props claro
 - palette coerente com a arquitetura da lib
 
+Fluxo oficial de release:
+
+```bash
+npm version patch
+npm run release:check
+npm publish
+```
+
+Guia detalhado:
+
+- `docs/PUBLISHING.md`
+
 ## O que evitar
 
 - colocar regra de negocio de uma tela dentro da lib

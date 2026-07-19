@@ -22,6 +22,19 @@ export function Example() {
 
 - Uso da lib: [`docs/USAGE.md`](./docs/USAGE.md)
 - Manutencao e boas praticas: [`docs/MAINTAINING.md`](./docs/MAINTAINING.md)
+- Publicacao da lib: [`docs/PUBLISHING.md`](./docs/PUBLISHING.md)
+
+## GitHub
+
+O repositório já pode usar GitHub Actions para:
+
+- validar a lib em `push` e `pull_request`
+- publicar no npm ao subir uma tag `v*.*.*`
+
+Arquivos:
+
+- `.github/workflows/ci.yml`
+- `.github/workflows/publish.yml`
 
 ## API publica atual
 
@@ -96,15 +109,19 @@ Validacao antes de publicar:
 npm run validate
 ```
 
+Validacao completa de release:
+
+```bash
+npm run release:check
+```
+
 ## Publicacao
 
 Fluxo sugerido:
 
 ```bash
-npm login
-npm test
-npm run build
-npm run pack:check
+npm version patch
+npm run release:check
 npm publish
 ```
 
