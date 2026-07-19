@@ -1,0 +1,222 @@
+import { Canvas, Controls, Meta } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './stories/Button.stories';
+
+<Meta of={ButtonStories} />
+
+# Button
+
+O `Button` e o componente base de acoes da `@matech/components`.
+
+Ele cobre tres niveis de destaque:
+
+- `primary`: acao principal da tela
+- `secondary`: acao secundaria com contorno
+- `tertiary`: acao leve, com fundo transparente
+
+## Importacao
+
+```tsx
+import { Button } from '@matech/components';
+```
+
+## Uso rapido
+
+```tsx
+<Button>Novo curso</Button>
+```
+
+<Canvas of={ButtonStories.Primary} sourceState="shown" />
+
+## Variantes
+
+### Primary
+
+Use quando a acao precisa de maior destaque visual.
+
+<Canvas of={ButtonStories.Primary} />
+
+### Secondary
+
+Use quando a acao existe, mas nao deve competir com a principal.
+
+<Canvas of={ButtonStories.Secondary} />
+
+### Tertiary
+
+Use para acoes leves, contextuais ou inline.
+Por padrao, ela usa fundo transparente e texto/icone na cor primaria da palette.
+
+<Canvas of={ButtonStories.Tertiary} />
+
+## Com icone
+
+O componente aceita `icon` opcional e recebe qualquer `ReactNode`.
+
+```tsx
+function PlusIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+      <path d="M11 5h2v14h-2z" />
+      <path d="M5 11h14v2H5z" />
+    </svg>
+  );
+}
+
+<Button icon={<PlusIcon />}>Novo evento</Button>
+```
+
+<Canvas of={ButtonStories.PrimaryWithIcon} />
+<Canvas of={ButtonStories.SecondaryWithIcon} />
+<Canvas of={ButtonStories.TertiaryWithIcon} />
+
+## Exemplo real
+
+Um conjunto de acoes com niveis diferentes de destaque:
+
+<Canvas of={ButtonStories.Showcase} />
+
+## Props principais
+
+<Controls of={ButtonStories.Primary} />
+
+## Personalizacao por tema
+
+O `Button` usa uma palette default da propria lib, mas o projeto consumidor pode sobrescrever os valores usando o `MatechThemeProvider`.
+
+### Estrutura de override
+
+```tsx
+{
+  global: {
+    brand: '#0F766E',
+    brandStrong: '#115E59',
+    brandForeground: '#F3FFFD',
+    surface: '#FFFFFF',
+    surfaceMuted: '#F0FDFA',
+    border: '#99F6E4',
+    borderStrong: '#5EEAD4',
+    text: '#115E59',
+    textMuted: '#6B7280',
+  },
+  components: {
+    button: {
+      primary: {
+        background: '#0F766E',
+        border: '#0F766E',
+        foreground: '#F3FFFD',
+        hoverBackground: '#115E59',
+        hoverBorder: '#115E59',
+      },
+    },
+  },
+}
+```
+
+### Usando `MatechThemeProvider`
+
+```tsx
+import {
+  Button,
+  createMatechTheme,
+  MatechThemeProvider,
+} from '@matech/components';
+
+const theme = createMatechTheme({
+  global: {
+    brand: '#0F766E',
+    brandStrong: '#115E59',
+    brandForeground: '#F3FFFD',
+    surface: '#FFFFFF',
+    surfaceMuted: '#F0FDFA',
+    border: '#99F6E4',
+    borderStrong: '#5EEAD4',
+    text: '#115E59',
+    textMuted: '#6B7280',
+  },
+  typography: {
+    fontFamily: '"Lato", "Segoe UI", sans-serif',
+    button: {
+      fontWeight: 900,
+      letterSpacing: '0.04em',
+      textTransform: 'uppercase',
+    },
+  },
+});
+
+export function Example() {
+  return (
+    <MatechThemeProvider theme={theme}>
+      <Button>Novo curso</Button>
+    </MatechThemeProvider>
+  );
+}
+```
+
+<Canvas of={ButtonStories.CustomPalette} />
+
+### Usando `createMatechThemeOptions`
+
+Use esse helper quando fizer sentido separar o objeto de configuracao antes de criar o tema.
+
+```tsx
+import {
+  Button,
+  createMatechTheme,
+  createMatechThemeOptions,
+  MatechThemeProvider,
+} from '@matech/components';
+
+const themeOptions = createMatechThemeOptions({
+  components: {
+    button: {
+      tertiary: {
+        foreground: '#115E59',
+        hoverBackground: 'rgba(15, 118, 110, 0.08)',
+      },
+    },
+  },
+});
+
+const theme = createMatechTheme(themeOptions);
+```
+
+### Tipografia
+
+Voce pode configurar a tipografia global da lib e a tipografia do `Button`.
+
+```tsx
+const theme = createMatechTheme({
+  typography: {
+    fontFamily: '"Lato", "Segoe UI", sans-serif',
+    button: {
+      fontFamily: '"Lato", "Segoe UI", sans-serif',
+      fontWeight: 900,
+      letterSpacing: '0.04em',
+      textTransform: 'uppercase',
+    },
+  },
+});
+```
+
+## Ajuste pontual por tela
+
+A lib nao traz uma variante destrutiva fixa no `Button`.
+Quando o projeto precisar disso, a tela consumidora pode aplicar a cor diretamente via `style` ou via tema.
+
+```tsx
+function TrashIcon() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18">
+      <path d="M7 21c-.55 0-1-.45-1-1V7h12v13c0 .55-.45 1-1 1zm3-4h2V9h-2zm4 0h2V9h-2zM15 4l-1-1h-4L9 4H4v2h16V4z" />
+    </svg>
+  );
+}
+
+<Button
+  variant="tertiary"
+  icon={<TrashIcon />}
+  style={{ color: '#FF4D3D' }}
+>
+  Remover
+</Button>
+```
